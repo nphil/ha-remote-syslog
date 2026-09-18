@@ -1,0 +1,12 @@
+{
+  "entity": {
+    "sensor": {
+      "forwarded_records": {
+        "default": "mdi:file-send-outline"
+      },
+      "last_forwarded": {
+        "default": "mdi:clock-check-outline"
+      }
+    }
+  }
+}

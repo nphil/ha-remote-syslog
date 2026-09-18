@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Remote Syslog: a log page shipping its lines to a rack.
+       Three elements on one horizontal axis at y=256 so the arrow actually
+       connects the page to the rack; everything sits inside a 64px margin. -->
+  <rect width="512" height="512" rx="96" fill="#2C3E50"/>
+
+  <!-- log page, left -->
+  <path d="M72 140h116l44 44v188H72z" fill="#F4F7FA"/>
+  <path d="M188 140l44 44h-44z" fill="#9FB3C8"/>
+  <g fill="#2C3E50">
+    <rect x="96" y="212" width="68" height="14" rx="7"/>
+    <rect x="96" y="246" width="112" height="14" rx="7"/>
+    <rect x="96" y="280" width="88" height="14" rx="7"/>
+    <rect x="96" y="314" width="112" height="14" rx="7"/>
+  </g>
+
+  <!-- packet in flight, centre, on the same axis as both objects -->
+  <path d="M252 256h58" stroke="#18BCF2" stroke-width="24" stroke-linecap="round"/>
+  <path d="M306 226l46 30-46 30z" fill="#18BCF2"/>
+
+  <!-- server rack, right -->
+  <rect x="356" y="140" width="84" height="232" rx="16" fill="#18BCF2"/>
+  <g fill="#2C3E50" opacity="0.85">
+    <rect x="372" y="164" width="52" height="16" rx="8"/>
+    <rect x="372" y="200" width="52" height="16" rx="8"/>
+    <rect x="372" y="272" width="52" height="16" rx="8"/>
+    <rect x="372" y="308" width="52" height="16" rx="8"/>
+  </g>
+  <!-- activity LEDs on the middle unit, the one being written to -->
+  <g fill="#F4F7FA">
+    <circle cx="382" cy="244" r="8"/>
+    <circle cx="410" cy="244" r="8"/>
+  </g>
+</svg>

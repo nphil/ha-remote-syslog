@@ -1,0 +1,91 @@
+{
+  "title": "Remote Syslog",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Remote syslog server",
+        "description": "Home Assistant's own log rotates only at restart and keeps one previous copy, so a restart destroys the history. Send it to a syslog collector instead, where it is rotated and kept.",
+        "data": {
+          "host": "Host",
+          "port": "Port",
+          "protocol": "Protocol"
+        },
+        "data_description": {
+          "host": "Hostname or IP address of the syslog collector.",
+          "port": "Usually 514.",
+          "protocol": "UDP is what most collectors listen on by default. TCP confirms delivery and never drops a record, but requires the collector to accept it."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not reach that address. For TCP, check the collector is listening on that port; for UDP, check the hostname resolves."
+    },
+    "abort": {
+      "already_configured": "This collector is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Forwarding options",
+        "description": "Everything at the chosen level and above is forwarded. Keep this at Warning for normal use and raise it while investigating something - a single integration at Debug can produce megabytes per hour.",
+        "data": {
+          "level": "Minimum level",
+          "tag": "Syslog tag",
+          "facility": "Facility",
+          "exclude_loggers": "Exclude loggers",
+          "include_loggers": "Only these loggers"
+        },
+        "data_description": {
+          "level": "Records below this level are not sent.",
+          "tag": "Identifies Home Assistant in the collector's logs. The integration's logger name is appended automatically.",
+          "facility": "Syslog facility to send under, so records can be routed or filtered by the collector. local0 keeps Home Assistant distinct from add-ons and network gear.",
+          "exclude_loggers": "One logger name per line, matched by prefix - 'custom_components.foo' covers all of its child loggers. Use this to silence a known firehose. Exclusions take priority over the list below.",
+          "include_loggers": "One per line, also matched by prefix. Leave empty to forward everything. Set this only when you want a narrow capture of specific integrations."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "forwarded_records": {
+        "name": "Forwarded records"
+      },
+      "last_forwarded": {
+        "name": "Last forwarded"
+      }
+    }
+  },
+  "selector": {
+    "protocol": {
+      "options": {
+        "udp": "UDP",
+        "tcp": "TCP"
+      }
+    },
+    "level": {
+      "options": {
+        "debug": "Debug (everything - very high volume)",
+        "info": "Info",
+        "warning": "Warning (recommended)",
+        "error": "Error",
+        "critical": "Critical"
+      }
+    },
+    "facility": {
+      "options": {
+        "user": "user",
+        "daemon": "daemon",
+        "syslog": "syslog",
+        "local0": "local0 (recommended)",
+        "local1": "local1",
+        "local2": "local2",
+        "local3": "local3",
+        "local4": "local4",
+        "local5": "local5",
+        "local6": "local6",
+        "local7": "local7"
+      }
+    }
+  }
+}
