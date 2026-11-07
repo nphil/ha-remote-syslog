@@ -1,6 +1,7 @@
 {
   "domain": "ha_syslog",
   "name": "Remote Syslog",
+  "categories": ["computers_network.monitoring"],
   "codeowners": ["@nphil"],
   "config_flow": true,
   "documentation": "https://github.com/nphil/ha-remote-syslog",
@@ -8,5 +9,5 @@
   "iot_class": "local_push",
   "issue_tracker": "https://github.com/nphil/ha-remote-syslog/issues",
   "requirements": [],
-  "version": "1.0.1"
+  "version": "1.0.2"
 }
